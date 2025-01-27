@@ -3,26 +3,18 @@ import React, { useState } from 'react';
 
 const TodoList = () => {
   const [tasks, setTasks] = useState(["Wash my hands", "Prepare Dinner", "Sleep"]);
-  const [inputValue, setInputValue] = useState("What needs to be done?");
+  const [inputValue, setInputValue] = useState("");
   const [updateFlag, setUpdateFlag] = useState(false);
 
-  const handleFocus = (e) => {
-    if (e.target === document.getElementById('task') && inputValue === "What needs to be done?") {
-      setInputValue('');
-    }
-  };
-
-  const handleBlur = (e) => {
-    if (!e.target.value) {
-      setInputValue("What needs to be done?");
-    }
-  };
+  
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (inputValue.trim() && inputValue !== "What needs to be done?") {
+    if (inputValue.trim()) {
       setTasks([...tasks, inputValue]);
-      setInputValue("What needs to be done?");
+      setInputValue("");
+      
     }
   };
 
@@ -39,16 +31,15 @@ const TodoList = () => {
 
   return (
     <>
-              <div className="container" style={{ height: getContainerHeight() }} onClick={handleFocus} onBlur={() => document.getElementById('task').focus()}>
+              <div className="container" style={{ height: getContainerHeight() }}>
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">
                     <input
                       type="text"
                       className="form-control"
                       id="task"
+                      placeholder="What's need to de done?"
                       value={inputValue}
-                      onFocus={handleFocus}
-                      onBlur={handleBlur}
                       onChange={(e) => setInputValue(e.target.value)}
                     />
                   </div>
