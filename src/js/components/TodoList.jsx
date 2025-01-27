@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 
 const TodoList = () => {
-  const [tasks, setTasks] = useState(["Wash my hands", "Prepare Dinner", "Sleep"]);
+  const [tasks, setTasks] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [updateFlag, setUpdateFlag] = useState(false);
 
